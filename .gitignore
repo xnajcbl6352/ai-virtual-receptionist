@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+
+# Logs
+logs
+*.log
+
+# Build
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+
+# Testing
+coverage/
+
+# Misc
+.DS_Store
+Thumbs.db

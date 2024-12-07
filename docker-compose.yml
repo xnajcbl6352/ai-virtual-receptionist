@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./src/api
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - MCP_API_KEY=${MCP_API_KEY}
+    depends_on:
+      - redis
+      - cognitive
+  
+  cognitive:
+    build: ./src/cognitive
+    environment:
+      - MCP_API_KEY=${MCP_API_KEY}
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - PINECONE_ENV=${PINECONE_ENV}
+  
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
